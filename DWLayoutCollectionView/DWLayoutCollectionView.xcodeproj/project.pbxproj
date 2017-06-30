@@ -17,6 +17,7 @@
 		8A99E9751F05F8B8003AC74F /* DWLayoutCollectionViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9741F05F8B8003AC74F /* DWLayoutCollectionViewUITests.m */; };
 		8A99E9851F05F8E7003AC74F /* DWCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9841F05F8E7003AC74F /* DWCollectionView.m */; };
 		8A99E9881F05F9F8003AC74F /* DWCollectionViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9871F05F9F8003AC74F /* DWCollectionViewLayout.m */; };
+		8A99E98B1F0653A5003AC74F /* LayoutStringController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E98A1F0653A5003AC74F /* LayoutStringController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		8A99E9841F05F8E7003AC74F /* DWCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCollectionView.m; sourceTree = "<group>"; };
 		8A99E9861F05F9F8003AC74F /* DWCollectionViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCollectionViewLayout.h; sourceTree = "<group>"; };
 		8A99E9871F05F9F8003AC74F /* DWCollectionViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCollectionViewLayout.m; sourceTree = "<group>"; };
+		8A99E9891F0653A5003AC74F /* LayoutStringController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LayoutStringController.h; sourceTree = "<group>"; };
+		8A99E98A1F0653A5003AC74F /* LayoutStringController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayoutStringController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				8A99E95D1F05F8B8003AC74F /* LaunchScreen.storyboard */,
 				8A99E9601F05F8B8003AC74F /* Info.plist */,
 				8A99E94F1F05F8B8003AC74F /* Supporting Files */,
+				8A99E9891F0653A5003AC74F /* LayoutStringController.h */,
+				8A99E98A1F0653A5003AC74F /* LayoutStringController.m */,
 			);
 			path = DWLayoutCollectionView;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 			files = (
 				8A99E9571F05F8B8003AC74F /* ViewController.m in Sources */,
 				8A99E9541F05F8B8003AC74F /* AppDelegate.m in Sources */,
+				8A99E98B1F0653A5003AC74F /* LayoutStringController.m in Sources */,
 				8A99E9881F05F9F8003AC74F /* DWCollectionViewLayout.m in Sources */,
 				8A99E9511F05F8B8003AC74F /* main.m in Sources */,
 				8A99E9851F05F8E7003AC74F /* DWCollectionView.m in Sources */,
@@ -532,6 +538,7 @@
 				8A99E97B1F05F8B8003AC74F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A99E97C1F05F8B8003AC74F /* Build configuration list for PBXNativeTarget "DWLayoutCollectionViewTests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +547,7 @@
 				8A99E97E1F05F8B8003AC74F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8A99E97F1F05F8B8003AC74F /* Build configuration list for PBXNativeTarget "DWLayoutCollectionViewUITests" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +556,7 @@
 				8A99E9811F05F8B8003AC74F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

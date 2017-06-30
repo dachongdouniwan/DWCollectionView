@@ -7,15 +7,10 @@
 //
 
 #import "ViewController.h"
-#import "DWCollectionView.h"
-#import "DWCollectionViewLayout.h"
-@interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+#import "LayoutStringController.h"
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic,strong) DWCollectionView *dwCollectionView;
-
-@property (nonatomic,strong) DWCollectionViewLayout *dwLayout;
-
-@property (nonatomic,strong) NSArray *labelWidthArray;
+@property (nonatomic,strong) UITableView *tableView;
 
 @end
 
@@ -23,70 +18,34 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.view.backgroundColor = [UIColor whiteColor];
-    self.labelWidthArray = @[@(200),@(60),@(100)];
-    [self.view addSubview:self.dwCollectionView];
-    
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 30)];
-    titleLabel.center = self.view.center;
-    titleLabel.numberOfLines = 0;
-    titleLabel.backgroundColor = [UIColor redColor];
-    titleLabel.text = @"打开进风口大家反馈大家疯狂的积分快到附近的客服即可得分";
-    [titleLabel sizeToFit];
-    [self.view addSubview:titleLabel];
-    
-    NSLog(@"---%f",titleLabel.bounds.size.height);
-    CGRect frame = titleLabel.frame;
-    CGFloat height = titleLabel.bounds.size.height+30;
-    frame.size.height = height;
-    titleLabel.frame = frame;
-    
-    titleLabel.text = @"打开进风口大家反馈大家疯狂的积分快到附近的客服即可得分打开进风口大家反馈大家疯狂的积分快到附近的客服即可得分";
-    [titleLabel sizeToFit];
 
+    [self.view addSubview:self.tableView];
 }
 
-
--(UICollectionViewFlowLayout*)dwLayout{
-    if (!_dwLayout) {
-        _dwLayout = [[DWCollectionViewLayout alloc] initWithArray:@[@(40),@(60),@(80),@(60),@(100),@(100),@(80),@(65),@(75),@(60),@(120),@(60),@(100),@(55),@(60),@(100),@(80),@(65),@(75),@(95)]];
-//        _dwLayout.minimumLineSpacing = 5;
-//        _dwLayout.minimumInteritemSpacing = 10;
+-(UITableView*)tableView{
+    if (!_tableView) {
+        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCellID"];
+        _tableView.delegate = self;
+        _tableView.dataSource = self;
+        _tableView.tableFooterView = [UIView new];
     }
-    return _dwLayout;
+    return _tableView;
 }
 
-
--(DWCollectionView*)dwCollectionView{
-    
-    if (!_dwCollectionView) {
-        _dwCollectionView = [[DWCollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:self.dwLayout];
-        [_dwCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCellID"];
-        _dwCollectionView.delegate = self;
-        _dwCollectionView.dataSource = self;
-    }
-    return _dwCollectionView;
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 1;
 }
 
-
-
--(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 20;
-}
-
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-    
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCellID" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+-(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCellID"];
+    cell.textLabel.text = @"自适应String的layout";
     return cell;
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
-//    
-//    NSNumber *number = self.labelWidthArray[indexPath.row];
-//    CGFloat width = number.floatValue;
-//    return CGSizeMake(width, 30);
-//}
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self.navigationController pushViewController:[[LayoutStringController alloc] init] animated:YES];
+}
+
 
 @end

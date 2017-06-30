@@ -143,8 +143,6 @@
                         CGFloat sameAttributeHeight = sameYAttributs.size.height;
                         
                         CGRect sameYAttributsFrame = sameYAttributs.frame;
-                        NSLog(@"%f===%f===%f====%f",sameYAttributsFrame.origin.x,sameYAttributsFrame.origin.y,sameYAttributsFrame.size.width,sameYAttributsFrame.size.height);
-
                         ///更新sameYAttributs宽度使之均衡显示
                         sameAttributeWidth += sameYBetween;
                         sameYAttributs.size = CGSizeMake(sameAttributeWidth, sameAttributeHeight);
@@ -153,13 +151,7 @@
                         sameYAttributsFrame.origin.x += (sameYBetween*index);
                         sameYAttributsFrame.size.width = sameAttributeWidth;
                         sameYAttributs.frame = sameYAttributsFrame;
-                        
-                        
-                        NSLog(@"%f----%f-----%f----%f",sameYAttributs.frame.origin.x,sameYAttributs.frame.origin.y,sameYAttributs.bounds.size.width,sameYAttributs.bounds.size.height);
-
                     }
-                    
-                    
                     currentFrame.origin.x = 10.0;
                     currentFrame.origin.y = CGRectGetMaxY(lastFrame)+10;
                     currentFrame.size.width = width;
@@ -167,17 +159,23 @@
                     attributs.frame = currentFrame;
                     
                 }else{
+                    
                     ///足够显示当前item的宽度
-                    currentFrame.origin.x = CGRectGetMaxX(lastFrame)+10;
-                    currentFrame.origin.y = lastFrame.origin.y;
-                    currentFrame.size.width = width;
-                    currentFrame.size.height = height;
-                    attributs.frame = currentFrame;
+                    if (indexPath.row==self.widthArray.count-1) {
+                        
+                    }else{
+                        currentFrame.origin.x = CGRectGetMaxX(lastFrame)+10;
+                        currentFrame.origin.y = lastFrame.origin.y;
+                        currentFrame.size.width = width;
+                        currentFrame.size.height = height;
+                        attributs.frame = currentFrame;
+                    }
+                   
                 }
             }
         }else{
             currentFrame.origin.x = 10.0;
-            currentFrame.origin.y = 0;
+            currentFrame.origin.y = 10;
             currentFrame.size.width = width;
             currentFrame.size.height = height;
             attributs.frame = currentFrame;
