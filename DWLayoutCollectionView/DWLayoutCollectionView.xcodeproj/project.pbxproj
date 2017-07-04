@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A7B5B011F0B2812009B7E5D /* WaterFallController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B5B001F0B2812009B7E5D /* WaterFallController.m */; };
 		8A99E9511F05F8B8003AC74F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9501F05F8B8003AC74F /* main.m */; };
 		8A99E9541F05F8B8003AC74F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9531F05F8B8003AC74F /* AppDelegate.m */; };
 		8A99E9571F05F8B8003AC74F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9561F05F8B8003AC74F /* ViewController.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A7B5AFF1F0B2812009B7E5D /* WaterFallController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFallController.h; sourceTree = "<group>"; };
+		8A7B5B001F0B2812009B7E5D /* WaterFallController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterFallController.m; sourceTree = "<group>"; };
 		8A99E94C1F05F8B8003AC74F /* DWLayoutCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWLayoutCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A99E9501F05F8B8003AC74F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8A99E9521F05F8B8003AC74F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -122,6 +125,8 @@
 				8A99E94F1F05F8B8003AC74F /* Supporting Files */,
 				8A99E9891F0653A5003AC74F /* LayoutStringController.h */,
 				8A99E98A1F0653A5003AC74F /* LayoutStringController.m */,
+				8A7B5AFF1F0B2812009B7E5D /* WaterFallController.h */,
+				8A7B5B001F0B2812009B7E5D /* WaterFallController.m */,
 			);
 			path = DWLayoutCollectionView;
 			sourceTree = "<group>";
@@ -299,6 +304,7 @@
 			files = (
 				8A99E9571F05F8B8003AC74F /* ViewController.m in Sources */,
 				8A99E9541F05F8B8003AC74F /* AppDelegate.m in Sources */,
+				8A7B5B011F0B2812009B7E5D /* WaterFallController.m in Sources */,
 				8A99E98B1F0653A5003AC74F /* LayoutStringController.m in Sources */,
 				8A99E9881F05F9F8003AC74F /* DWCollectionViewLayout.m in Sources */,
 				8A99E9511F05F8B8003AC74F /* main.m in Sources */,

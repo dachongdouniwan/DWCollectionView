@@ -10,6 +10,6 @@
 
 @interface DWCollectionViewLayout : UICollectionViewFlowLayout
 
--(instancetype)initWithArray:(NSArray*)widthArray;
+-(instancetype)initWithArray:(NSArray*)widthArray edgeInsets:(UIEdgeInsets)insets;
 
 @end
