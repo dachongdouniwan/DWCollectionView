@@ -15,7 +15,7 @@
 
 @property (nonatomic,strong) DWCollectionViewLayout *dwLayout;
 
-@property (nonatomic,strong) NSArray *labelWidthArray;
+@property (nonatomic,strong) NSMutableArray *labelWidthArray;
 
 @property (nonatomic,strong) NSArray<NSString*> *titleArray;
 
@@ -36,14 +36,12 @@
 //    self.labelWidthArray = @[@(40),@(60),@(80),@(60),@(100),@(100),@(80),@(65),@(75),@(60),@(120),@(60),@(100),@(55),@(60),@(100),@(80),@(65),@(75),@(95),@(55),@(60),@(100),@(80),@(65),@(75)];
     [self caclueHeight];
     [self.view addSubview:self.dwCollectionView];
-    
-    [self caclueHeight];
 }
 
 
 -(void)caclueHeight{
     
-    NSArray<NSString*> *array = @[@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开",@"打开进口",@"打开进风口",@"打开进风口",@"打开进风口",@"打开进风等待口",@"打开的豆腐豆腐豆腐豆腐放方法风口",@"打开的等待进风口",@"打开点点滴滴风口",@"打开进豆腐豆腐豆腐风口",@"打开进风口",@"打开进的疯狂减肥风口",@"打开进风口",@"打开进对方的风口",@"打开进风放豆腐豆腐口",@"打开进风口",@"打开",@"打开进风口疯狂"];
+    NSArray<NSString*> *array = @[@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口"];
     
     __block NSMutableArray *heightArray = [NSMutableArray array];
     
@@ -54,6 +52,7 @@
     }];
     self.titleArray = array;
     self.labelWidthArray = heightArray;
+    NSLog(@"====%p",self.labelWidthArray);
 }
 
 -(UICollectionViewFlowLayout*)dwLayout{
@@ -69,20 +68,20 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCellID" forIndexPath:indexPath];
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:cell.contentView.bounds];
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.font = [UIFont systemFontOfSize:15.0];
-    [cell.contentView addSubview:titleLabel];
-    titleLabel.text = self.titleArray [indexPath.row];
+    DWCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCellID" forIndexPath:indexPath];
+    cell.label.text = self.titleArray [indexPath.row];
     cell.backgroundColor = [UIColor redColor];
+    
+//    NSLog(@"%f----%f-----%f-----%f",cell.contentView.frame.origin.x,cell.contentView.frame.origin.y,cell.contentView.frame.size.width,cell.contentView.frame.size.height);
+    
     return cell;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"点击了哪个cell--%ld",indexPath.row);
-//    [self.dwLayout invalidateLayout];
+    [self.labelWidthArray removeLastObject];
     [collectionView reloadData];
+    [self.dwLayout invalidateLayout];
 }
 
 
@@ -90,7 +89,7 @@
     
     if (!_dwCollectionView) {
         _dwCollectionView = [[DWCollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 400) collectionViewLayout:self.dwLayout];
-        [_dwCollectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCellID"];
+        [_dwCollectionView registerClass:[DWCollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCellID"];
         _dwCollectionView.delegate = self;
         _dwCollectionView.dataSource = self;
         _dwCollectionView.backgroundColor = [UIColor yellowColor];
@@ -99,3 +98,30 @@
 }
 
 @end
+
+@implementation DWCollectionViewCell
+
+-(instancetype)initWithFrame:(CGRect)frame{
+    if (self =[super initWithFrame:frame]) {
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:self.contentView.bounds];
+        label.backgroundColor = [UIColor orangeColor];
+        label.textAlignment = NSTextAlignmentCenter;
+        [self.contentView addSubview:label];
+        self.label = label;
+        
+    }
+    return self;
+}
+
+-(void)layoutSubviews{
+    ///没有调用之前cell的frame
+//    NSLog(@"%f----%f-----%f-----%f",self.contentView.frame.origin.x,self.contentView.frame.origin.y,self.contentView.frame.size.width,self.contentView.frame.size.height);
+    [super layoutSubviews];
+    ///subviews的frame更新后，父类的frame也会更新
+    self.label.frame = self.contentView.bounds;
+//    NSLog(@"%f----==%f-----==%f----==-%f",self.contentView.frame.origin.x,self.contentView.frame.origin.y,self.contentView.frame.size.width,self.contentView.frame.size.height);
+}
+
+@end
+

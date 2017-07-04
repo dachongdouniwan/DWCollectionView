@@ -17,7 +17,6 @@
 
 @property (nonatomic,strong) NSMutableArray *attributesArray;
 
-@property (nonatomic,strong) NSArray *widthArray;
 
 @property (nonatomic,assign) CGFloat maxY;
 
@@ -37,9 +36,11 @@
 @implementation DWCollectionViewLayout
 
 
--(instancetype)initWithArray:(NSArray*)widthArray edgeInsets:(UIEdgeInsets)insets{
+-(instancetype)initWithArray:(NSMutableArray*)widthArray edgeInsets:(UIEdgeInsets)insets{
     if (self = [super init]) {
         self.widthArray = widthArray;
+        NSLog(@"==***==%p",self.widthArray);
+
         self.left = insets.left;
         self.right = insets.right;
         self.top = insets.top;
@@ -73,7 +74,6 @@
         UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
         [self.attributesArray addObject:attributes];
         if (i==self.widthArray.count-1) {
-            
             [self loadOldAttributes:attributes.frame];
         }
     }
@@ -193,6 +193,9 @@
     
     attributs.size = CGSizeMake(width, 30);
     self.maxY = CGRectGetMaxY(attributs.frame)+10;
+    
+    NSLog(@"%f===%f===%f===%f",attributs.frame.origin.x,attributs.frame.origin.y,attributs.frame.size.width,attributs.frame.size.height);
+    
     return attributs;
 }
 
@@ -215,6 +218,7 @@
 /**
   另外，在需要更新layout时，需要给当前layout发送 -invalidateLayout，该消息会立即返回，并且预约在下一个loop的时候刷新当前layout，这一点和UIView的setNeedsLayout方法十分类似。在-invalidateLayout后的下一个collectionView的刷新loop中，又会从prepareLayout开始，依次再调用-collectionViewContentSize和-layoutAttributesForElementsInRect来生成更新后的布局。
  */
+
 
 
 -(void)loadOldAttributes:(CGRect)lastFrame{

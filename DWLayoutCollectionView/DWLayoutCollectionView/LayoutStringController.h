@@ -11,3 +11,12 @@
 @interface LayoutStringController : UIViewController
 
 @end
+@interface DWCollectionViewCell : UICollectionViewCell
+@property (nonatomic,strong) UILabel *label;
+
+@property (nonatomic,copy) NSString *title;
+
+
+@end
+
+
