@@ -8,9 +8,12 @@
 
 #import "ViewController.h"
 #import "LayoutStringController.h"
+#import "WaterFallController.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
+
+@property (nonatomic,strong) NSArray<NSString*> *dataArray;
 
 @end
 
@@ -34,18 +37,39 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return self.dataArray.count;
 }
 
 -(UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCellID"];
-    cell.textLabel.text = @"自适应String的layout";
+    cell.textLabel.text = self.dataArray[indexPath.row];
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self.navigationController pushViewController:[[LayoutStringController alloc] init] animated:YES];
+    
+    switch (indexPath.row) {
+        case 0:
+            [self.navigationController pushViewController:[[WaterFallController alloc] init] animated:YES];
+            break;
+            
+        case 1:
+            [self.navigationController pushViewController:[[LayoutStringController alloc] init] animated:YES];
+            break;
+            
+        default:
+            break;
+    }
+    
 }
 
+
+
+-(NSArray*)dataArray{
+    if (!_dataArray) {
+        _dataArray = [NSArray arrayWithObjects:@"普通collectionView",@"自适应String的layout", nil];
+    }
+    return _dataArray;
+}
 
 @end
