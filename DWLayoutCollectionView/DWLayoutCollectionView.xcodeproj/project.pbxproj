@@ -19,6 +19,9 @@
 		8A7647221F0C7852004357FE /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7647151F0C7852004357FE /* View+MASAdditions.m */; };
 		8A7647231F0C7852004357FE /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7647181F0C7852004357FE /* ViewController+MASAdditions.m */; };
 		8A7B5B011F0B2812009B7E5D /* WaterFallController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7B5B001F0B2812009B7E5D /* WaterFallController.m */; };
+		8A7E09731F0DCFE300909362 /* CommonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E09721F0DCFE300909362 /* CommonController.m */; };
+		8A7E09761F0DD9C000909362 /* EstimatedItemSizeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E09751F0DD9C000909362 /* EstimatedItemSizeController.m */; };
+		8A7E09791F0DDB3C00909362 /* DWWateFallLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E09781F0DDB3C00909362 /* DWWateFallLayout.m */; };
 		8A99E9511F05F8B8003AC74F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9501F05F8B8003AC74F /* main.m */; };
 		8A99E9541F05F8B8003AC74F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9531F05F8B8003AC74F /* AppDelegate.m */; };
 		8A99E9571F05F8B8003AC74F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A99E9561F05F8B8003AC74F /* ViewController.m */; };
@@ -78,6 +81,12 @@
 		8A7647181F0C7852004357FE /* ViewController+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ViewController+MASAdditions.m"; sourceTree = "<group>"; };
 		8A7B5AFF1F0B2812009B7E5D /* WaterFallController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFallController.h; sourceTree = "<group>"; };
 		8A7B5B001F0B2812009B7E5D /* WaterFallController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterFallController.m; sourceTree = "<group>"; };
+		8A7E09711F0DCFE300909362 /* CommonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonController.h; sourceTree = "<group>"; };
+		8A7E09721F0DCFE300909362 /* CommonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonController.m; sourceTree = "<group>"; };
+		8A7E09741F0DD9C000909362 /* EstimatedItemSizeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EstimatedItemSizeController.h; sourceTree = "<group>"; };
+		8A7E09751F0DD9C000909362 /* EstimatedItemSizeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EstimatedItemSizeController.m; sourceTree = "<group>"; };
+		8A7E09771F0DDB3C00909362 /* DWWateFallLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWWateFallLayout.h; sourceTree = "<group>"; };
+		8A7E09781F0DDB3C00909362 /* DWWateFallLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWWateFallLayout.m; sourceTree = "<group>"; };
 		8A99E94C1F05F8B8003AC74F /* DWLayoutCollectionView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DWLayoutCollectionView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A99E9501F05F8B8003AC74F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8A99E9521F05F8B8003AC74F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -198,6 +207,10 @@
 				8A99E98A1F0653A5003AC74F /* LayoutStringController.m */,
 				8A7B5AFF1F0B2812009B7E5D /* WaterFallController.h */,
 				8A7B5B001F0B2812009B7E5D /* WaterFallController.m */,
+				8A7E09711F0DCFE300909362 /* CommonController.h */,
+				8A7E09721F0DCFE300909362 /* CommonController.m */,
+				8A7E09741F0DD9C000909362 /* EstimatedItemSizeController.h */,
+				8A7E09751F0DD9C000909362 /* EstimatedItemSizeController.m */,
 			);
 			path = DWLayoutCollectionView;
 			sourceTree = "<group>";
@@ -235,6 +248,8 @@
 				8A99E9841F05F8E7003AC74F /* DWCollectionView.m */,
 				8A99E9861F05F9F8003AC74F /* DWCollectionViewLayout.h */,
 				8A99E9871F05F9F8003AC74F /* DWCollectionViewLayout.m */,
+				8A7E09771F0DDB3C00909362 /* DWWateFallLayout.h */,
+				8A7E09781F0DDB3C00909362 /* DWWateFallLayout.m */,
 			);
 			name = DWCollectionview;
 			sourceTree = "<group>";
@@ -378,10 +393,13 @@
 				8A76471F1F0C7852004357FE /* MASViewConstraint.m in Sources */,
 				8A99E9571F05F8B8003AC74F /* ViewController.m in Sources */,
 				8A76471C1F0C7852004357FE /* MASConstraintMaker.m in Sources */,
+				8A7E09761F0DD9C000909362 /* EstimatedItemSizeController.m in Sources */,
 				8A7647221F0C7852004357FE /* View+MASAdditions.m in Sources */,
 				8A99E9541F05F8B8003AC74F /* AppDelegate.m in Sources */,
 				8A76471B1F0C7852004357FE /* MASConstraint.m in Sources */,
 				8A7B5B011F0B2812009B7E5D /* WaterFallController.m in Sources */,
+				8A7E09731F0DCFE300909362 /* CommonController.m in Sources */,
+				8A7E09791F0DDB3C00909362 /* DWWateFallLayout.m in Sources */,
 				8A76471E1F0C7852004357FE /* MASViewAttribute.m in Sources */,
 				8A7647211F0C7852004357FE /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				8A99E98B1F0653A5003AC74F /* LayoutStringController.m in Sources */,

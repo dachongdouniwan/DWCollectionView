@@ -1,25 +1,23 @@
 //
-//  WaterFallController.m
+//  EstimatedItemSizeController.m
 //  DWLayoutCollectionView
 //
-//  Created by duyawei on 2017/7/4.
+//  Created by duyawei on 2017/7/6.
 //  Copyright © 2017年 duyawei. All rights reserved.
 //
 
-#import "WaterFallController.h"
+#import "EstimatedItemSizeController.h"
 #import "DWCollectionView.h"
 #import "Masonry.h"
-#import "DWWateFallLayout.h"
-@interface WaterFallController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
+@interface EstimatedItemSizeController ()<UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout>
 @property (nonatomic,strong) DWCollectionView *dwCollectionView;
 
-@property (nonatomic,strong) NSArray *labelWidthArray;
+@property (nonatomic,strong) NSMutableArray *labelWidthArray;
 
 @property (nonatomic,strong) NSArray<NSString*> *titleArray;
-
 @end
 
-@implementation WaterFallController
+@implementation EstimatedItemSizeController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,15 +32,12 @@
     
     NSArray<NSString*> *array = @[@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口"];
     
-//    __block NSMutableArray *heightArray = [NSMutableArray array];
-//    
-//    [array enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//        CGRect rect  =[obj boundingRectWithSize:CGSizeMake(MAXFLOAT, 30) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0]} context:nil];
-//        [heightArray addObject:@(rect.size.width+10)];
-//    }];
+    __block NSMutableArray *heightArray = [NSMutableArray array];
     
-     NSArray<NSNumber*> *heightArray = @[@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(40),@(100),@(80),@(60),@(80),@(100),@(80),@(50),@(80),@(100),@(80),@(70),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(60),@(80),@(90),@(80),@(20),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80),@(100),@(80)];
-    
+    [array enumerateObjectsUsingBlock:^(NSString * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGRect rect  =[obj boundingRectWithSize:CGSizeMake(MAXFLOAT, 30) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:16.0]} context:nil];
+        [heightArray addObject:@(rect.size.width+10)];
+    }];
     self.titleArray = array;
     self.labelWidthArray = heightArray;
 }
@@ -53,10 +48,10 @@
 
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
-    DWWaterFallCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCellID" forIndexPath:indexPath];
-    cell.label.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+    EstimatedItemCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCellID" forIndexPath:indexPath];
+    cell.label.text = self.titleArray [indexPath.row];
     cell.backgroundColor = [UIColor redColor];
-//    NSLog(@"%f----%f-----%f-----%f",cell.contentView.frame.origin.x,cell.contentView.frame.origin.y,cell.contentView.frame.size.width,cell.contentView.frame.size.height);
+    //    NSLog(@"%f----%f-----%f-----%f",cell.contentView.frame.origin.x,cell.contentView.frame.origin.y,cell.contentView.frame.size.width,cell.contentView.frame.size.height);
     return cell;
 }
 
@@ -70,10 +65,10 @@
     
     if (!_dwCollectionView) {
         
-        DWWateFallLayout *layout = [[DWWateFallLayout alloc] initWithHeightArray:self.labelWidthArray];
-////        layout.itemSize = CGSizeMake(100, 30);
-//        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);//整个section相对于collectionview的上左下右的间距（即collectionView有一个区，这个区有五十个item，这个区相当于在collectionView中的一个容器，这个容器相对于collectionView上左下右的间距）不是item之间的上下左右的间距。
-//        layout.minimumInteritemSpacing = 10;//item之间的最下间距，这个数据设置的时最小的间距，当间距小于这个值时，item就会换行显示，但是如果你设置的是10，世纪间距是20也是不会换行的只有小于这个值时才会换行。
+        UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
+        //        layout.itemSize = CGSizeMake(100, 30);
+        layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);//整个section相对于collectionview的上左下右的间距（即collectionView有一个区，这个区有五十个item，这个区相当于在collectionView中的一个容器，这个容器相对于collectionView上左下右的间距）不是item之间的上下左右的间距。
+        layout.minimumInteritemSpacing = 10;//item之间的最下间距，这个数据设置的时最小的间距，当间距小于这个值时，item就会换行显示，但是如果你设置的是10，世纪间距是20也是不会换行的只有小于这个值时才会换行。
         
         
         /**
@@ -91,9 +86,9 @@
          5.collection 使用这个最终的 size attribute 展示 cell
          */
         
-//        layout.estimatedItemSize = CGSizeMake(30, 30);//此属性8.0以后有效，作用：类似一个占位符，当加载item时会先加载这个size，显示的时候 根据 autolayout 的约束算出自适应内容的 size；
+        layout.estimatedItemSize = CGSizeMake(30, 30);//此属性8.0以后有效，作用：类似一个占位符，当加载item时会先加载这个size，显示的时候 根据 autolayout 的约束算出自适应内容的 size；
         _dwCollectionView = [[DWCollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 400) collectionViewLayout:layout];
-        [_dwCollectionView registerClass:[DWWaterFallCollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCellID"];
+        [_dwCollectionView registerClass:[EstimatedItemCollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCellID"];
         _dwCollectionView.delegate = self;
         _dwCollectionView.dataSource = self;
         _dwCollectionView.backgroundColor = [UIColor yellowColor];
@@ -104,18 +99,18 @@
 @end
 
 
-@implementation DWWaterFallCollectionViewCell
+@implementation EstimatedItemCollectionViewCell
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self =[super initWithFrame:frame]) {
         
-        
-//        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.top.mas_equalTo(@(0));
-//            make.height.mas_equalTo(@(30));
-//            ///宽度最小为100
-//            make.width.mas_greaterThanOrEqualTo(@(100)).priority(1000);
-//        }];
+        //1.设置self.contentView的约束，设置宽度就定高，设置高度就定宽
+        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.mas_equalTo(@(0));
+            make.height.mas_equalTo(@(30));
+            ///宽度最小为100
+            make.width.mas_greaterThanOrEqualTo(@(100)).priority(1000);
+        }];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.backgroundColor = [UIColor orangeColor];
@@ -123,6 +118,7 @@
         [self.contentView addSubview:label];
         self.label = label;
         
+        //2.设置好subviews的约束
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.right.bottom.equalTo(self.contentView).with.offset(0);
         }];
@@ -130,7 +126,27 @@
     return self;
 }
 
+
+///3.如果部需要更多关于UICollectionViewLayoutAttributes的操作建议不要重写
+
+//- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
+//    [self setNeedsLayout];
+//    [self layoutIfNeeded];
+//
+//    ///此处调用父类所等到的attributes 和你最后得到的layoutAttributes的size完全一样，如果只是修改size完全没必要重写,如果layout没有设置layout.estimatedItemSize，则attributes和layoutAttributes的size一样
+//    UICollectionViewLayoutAttributes *attributes = [super preferredLayoutAttributesFittingAttributes:layoutAttributes];
+//    NSLog(@"%f====%f",layoutAttributes.size.width,layoutAttributes.size.height);
+//
+//    NSLog(@"%f********%f",attributes.size.width,attributes.size.height);
+//
+//    CGSize size = [self.contentView systemLayoutSizeFittingSize:layoutAttributes.size];
+//    CGRect newFrame = layoutAttributes.frame;
+//    newFrame.size.width = size.width;
+//    layoutAttributes.frame = newFrame;
+//    NSLog(@"%f------%f",size.width,size.height);
+//    return layoutAttributes;
+//}
+
+
 @end
-
-
 

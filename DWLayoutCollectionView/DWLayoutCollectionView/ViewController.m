@@ -9,6 +9,9 @@
 #import "ViewController.h"
 #import "LayoutStringController.h"
 #import "WaterFallController.h"
+#import "CommonController.h"
+#import "EstimatedItemSizeController.h"
+
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -50,13 +53,17 @@
     
     switch (indexPath.row) {
         case 0:
-            [self.navigationController pushViewController:[[WaterFallController alloc] init] animated:YES];
+            [self.navigationController pushViewController:[[CommonController alloc] init] animated:YES];
             break;
-            
         case 1:
+            [self.navigationController pushViewController:[[EstimatedItemSizeController alloc] init] animated:YES];
+            break;
+        case 2:
             [self.navigationController pushViewController:[[LayoutStringController alloc] init] animated:YES];
             break;
-            
+        case 3:
+            [self.navigationController pushViewController:[[WaterFallController alloc] init] animated:YES];
+            break;
         default:
             break;
     }
@@ -67,7 +74,7 @@
 
 -(NSArray*)dataArray{
     if (!_dataArray) {
-        _dataArray = [NSArray arrayWithObjects:@"普通collectionView",@"自适应String的layout", nil];
+        _dataArray = [NSArray arrayWithObjects:@"普通collectionView",@"estimatedItemSize-Controller",@"自适应String的layout",@"WaterFallController-瀑布流", nil];
     }
     return _dataArray;
 }

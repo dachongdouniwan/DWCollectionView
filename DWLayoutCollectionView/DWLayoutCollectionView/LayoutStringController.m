@@ -39,7 +39,7 @@
 
 -(void)caclueHeight{
     
-    NSArray<NSString*> *array = @[@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口"];
+    NSArray<NSString*> *array = @[@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口"];
     
     __block NSMutableArray *heightArray = [NSMutableArray array];
     
@@ -102,47 +102,20 @@
 
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self =[super initWithFrame:frame]) {
-        
-        
-        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(@(0));
-            make.height.mas_equalTo(@(30));
-            ///宽度最小为100
-            make.width.mas_greaterThanOrEqualTo(@(100)).priority(1000);
-        }];
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+
+        UILabel *label = [[UILabel alloc] initWithFrame:self.bounds];
         label.backgroundColor = [UIColor orangeColor];
         label.textAlignment = NSTextAlignmentCenter;
+        label.autoresizingMask = UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight;
         [self.contentView addSubview:label];
         self.label = label;
         
-        [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.bottom.equalTo(self.contentView).with.offset(0);
-        }];
+//        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.top.right.bottom.equalTo(self.contentView).with.offset(0);
+//        }];
     }
     return self;
 }
-
-
-//- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
-//    [self setNeedsLayout];
-//    [self layoutIfNeeded];
-//    
-//    ///此处调用父类所等到的attributes 和你最后得到的layoutAttributes的size完全一样，如果只是修改size完全没必要重写,如果layout没有设置layout.estimatedItemSize，则attributes和layoutAttributes的size一样
-//    UICollectionViewLayoutAttributes *attributes = [super preferredLayoutAttributesFittingAttributes:layoutAttributes];
-//    NSLog(@"%f====%f",layoutAttributes.size.width,layoutAttributes.size.height);
-//    
-//    NSLog(@"%f********%f",attributes.size.width,attributes.size.height);
-//    
-//    CGSize size = [self.contentView systemLayoutSizeFittingSize:layoutAttributes.size];
-//    CGRect newFrame = layoutAttributes.frame;
-//    newFrame.size.width = size.width;
-//    layoutAttributes.frame = newFrame;
-//    NSLog(@"%f------%f",size.width,size.height);
-//    return layoutAttributes;
-//}
-
 
 /**
  *如果不使用约束来定位subviews的位置，就应该重写下面的方法，在其中来设置subviews的frame
@@ -154,7 +127,7 @@
 ////    NSLog(@"%f----%f-----%f-----%f",self.contentView.frame.origin.x,self.contentView.frame.origin.y,self.contentView.frame.size.width,self.contentView.frame.size.height);
 //    [super layoutSubviews];
 //    ///subviews的frame更新后，父类的frame也会更新
-////    self.label.frame = self.contentView.bounds;
+//    self.label.frame = self.contentView.bounds;
 ////    NSLog(@"%f----==%f-----==%f----==-%f",self.contentView.frame.origin.x,self.contentView.frame.origin.y,self.contentView.frame.size.width,self.contentView.frame.size.height);
 //}
 
