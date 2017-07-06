@@ -17,7 +17,6 @@
 
 @property (nonatomic,strong) NSMutableArray *attributesArray;
 
-
 @property (nonatomic,assign) CGFloat maxY;
 
 @property (nonatomic,assign) CGFloat left;

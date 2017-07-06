@@ -54,7 +54,7 @@
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     DWWaterFallCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCellID" forIndexPath:indexPath];
-    cell.label.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+    cell.label.text = [NSString stringWithFormat:@"%ld",indexPath.item];
     cell.backgroundColor = [UIColor redColor];
 //    NSLog(@"%f----%f-----%f-----%f",cell.contentView.frame.origin.x,cell.contentView.frame.origin.y,cell.contentView.frame.size.width,cell.contentView.frame.size.height);
     return cell;
@@ -91,8 +91,8 @@
          5.collection 使用这个最终的 size attribute 展示 cell
          */
         
-//        layout.estimatedItemSize = CGSizeMake(30, 30);//此属性8.0以后有效，作用：类似一个占位符，当加载item时会先加载这个size，显示的时候 根据 autolayout 的约束算出自适应内容的 size；
-        _dwCollectionView = [[DWCollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, 400) collectionViewLayout:layout];
+        layout.estimatedItemSize = CGSizeMake(30, 30);//此属性8.0以后有效，作用：类似一个占位符，当加载item时会先加载这个size，显示的时候 根据 autolayout 的约束算出自适应内容的 size；使用自定义Layout时,item会自适应但是在item上的布局无效
+        _dwCollectionView = [[DWCollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height-64) collectionViewLayout:layout];
         [_dwCollectionView registerClass:[DWWaterFallCollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCellID"];
         _dwCollectionView.delegate = self;
         _dwCollectionView.dataSource = self;
@@ -111,7 +111,7 @@
         
         
 //        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.top.mas_equalTo(@(0));
+//            make.left.top.right.bottom.mas_equalTo(@(0));
 //            make.height.mas_equalTo(@(30));
 //            ///宽度最小为100
 //            make.width.mas_greaterThanOrEqualTo(@(100)).priority(1000);

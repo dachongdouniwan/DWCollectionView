@@ -73,13 +73,11 @@
     return self.attributesArray;
 }
 
-
-
 ///返回对应于indexPath的位置的cell的布局属性,返回指定indexPath的item的布局信息。子类必须重载该方法,该方法只能为cell提供布局信息，不能为补充视图和装饰视图提供。
 -(UICollectionViewLayoutAttributes*)layoutAttributesForItemAtIndexPath:(NSIndexPath*)indexPath{
     UICollectionViewLayoutAttributes *attributs = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     
-    ///item的宽度
+    ///item的宽度，根据左右间距和中间间距算出item宽度
     CGFloat itemWidth = (self.collectionView.bounds.size.width - (10+10+10+10))/3.0;
     ///item的高度
     CGFloat itemHeight = self.itemHeightArray[indexPath.row].floatValue;
