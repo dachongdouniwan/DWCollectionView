@@ -30,7 +30,7 @@
 
 -(void)caclueHeight{
     
-    NSArray<NSString*> *array = @[@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口"];
+    NSArray<NSString*> *array = @[@"打开进",@"打开进风口打开进风口打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口"];
     
     __block NSMutableArray *heightArray = [NSMutableArray array];
     
@@ -109,7 +109,9 @@
             make.left.top.mas_equalTo(@(0));
             make.height.mas_equalTo(@(30));
             ///宽度最小为100
-            make.width.mas_greaterThanOrEqualTo(@(100)).priority(1000);
+//            make.width.mas_greaterThanOrEqualTo(@(100)).priority(1000);
+            ///设置最大宽度为390，最大宽度不能超过，DWCollectionView的宽度-左右边距-item的间距*item间距个数，超过就会卡死，debug疯狂输出log
+            make.width.mas_lessThanOrEqualTo([UIScreen mainScreen].bounds.size.width-19);
         }];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -129,23 +131,23 @@
 
 ///3.如果部需要更多关于UICollectionViewLayoutAttributes的操作建议不要重写
 
-//- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
-//    [self setNeedsLayout];
-//    [self layoutIfNeeded];
-//
-//    ///此处调用父类所等到的attributes 和你最后得到的layoutAttributes的size完全一样，如果只是修改size完全没必要重写,如果layout没有设置layout.estimatedItemSize，则attributes和layoutAttributes的size一样
-//    UICollectionViewLayoutAttributes *attributes = [super preferredLayoutAttributesFittingAttributes:layoutAttributes];
-//    NSLog(@"%f====%f",layoutAttributes.size.width,layoutAttributes.size.height);
-//
-//    NSLog(@"%f********%f",attributes.size.width,attributes.size.height);
-//
-//    CGSize size = [self.contentView systemLayoutSizeFittingSize:layoutAttributes.size];
-//    CGRect newFrame = layoutAttributes.frame;
-//    newFrame.size.width = size.width;
-//    layoutAttributes.frame = newFrame;
-//    NSLog(@"%f------%f",size.width,size.height);
-//    return layoutAttributes;
-//}
+- (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+
+    ///此处调用父类所等到的attributes 和你最后得到的layoutAttributes的size完全一样，如果只是修改size完全没必要重写,如果layout没有设置layout.estimatedItemSize，则attributes和layoutAttributes的size一样
+    UICollectionViewLayoutAttributes *attributes = [super preferredLayoutAttributesFittingAttributes:layoutAttributes];
+    NSLog(@"%f====%f",layoutAttributes.size.width,layoutAttributes.size.height);
+
+    NSLog(@"%f********%f",attributes.size.width,attributes.size.height);
+
+    CGSize size = [self.contentView systemLayoutSizeFittingSize:layoutAttributes.size];
+    CGRect newFrame = layoutAttributes.frame;
+    newFrame.size.width = size.width;
+    layoutAttributes.frame = newFrame;
+    NSLog(@"%f------%f",size.width,size.height);
+    return attributes;
+}
 
 
 @end
