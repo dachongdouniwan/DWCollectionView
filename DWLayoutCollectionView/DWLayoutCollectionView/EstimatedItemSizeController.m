@@ -104,7 +104,14 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self =[super initWithFrame:frame]) {
         
-        //1.设置self.contentView的约束，设置宽度就定高，设置高度就定宽
+        //1.设置self.contentView的约束，设置宽度就定高，设置高度就定宽（无论定宽还是定高，都不能超过collectionview的宽度和高度）
+        //以上面控制器为例子：我的需求是定高，自适应宽度（最大宽度为collectionview宽度超过不显示，label不能自动换行）
+        //如果不设置contenview的约束：宽度默认就为一个汉子字符的宽度为17.333，高度随着label的换行而增加。如果label不能换行则宽度会一直增加，超出屏幕后继续增加导致约束错误而卡死。
+
+        //如果按照下面的约束设置contenview的约束，设置定高为30，最小宽度为100，
+        //问题：因为数据源中第六个元素的宽度超过了collectionview的宽度所以会持续报错导致约束失败。
+        //解决方法：不设置最小宽度，设置最大宽度，如果设置了label可以自动换行也是可以将make.height.mas_equalTo(@(30))去掉，这样就可以自动换行了
+        
         [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.top.mas_equalTo(@(0));
             make.height.mas_equalTo(@(30));
@@ -117,6 +124,7 @@
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.backgroundColor = [UIColor orangeColor];
         label.textAlignment = NSTextAlignmentCenter;
+        label.numberOfLines = 0;
         [self.contentView addSubview:label];
         self.label = label;
         
@@ -130,17 +138,11 @@
 
 
 ///3.如果部需要更多关于UICollectionViewLayoutAttributes的操作建议不要重写
-
 - (UICollectionViewLayoutAttributes *)preferredLayoutAttributesFittingAttributes:(UICollectionViewLayoutAttributes *)layoutAttributes {
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
-
     ///此处调用父类所等到的attributes 和你最后得到的layoutAttributes的size完全一样，如果只是修改size完全没必要重写,如果layout没有设置layout.estimatedItemSize，则attributes和layoutAttributes的size一样
     UICollectionViewLayoutAttributes *attributes = [super preferredLayoutAttributesFittingAttributes:layoutAttributes];
     NSLog(@"%f====%f",layoutAttributes.size.width,layoutAttributes.size.height);
-
     NSLog(@"%f********%f",attributes.size.width,attributes.size.height);
-
     CGSize size = [self.contentView systemLayoutSizeFittingSize:layoutAttributes.size];
     CGRect newFrame = layoutAttributes.frame;
     newFrame.size.width = size.width;
