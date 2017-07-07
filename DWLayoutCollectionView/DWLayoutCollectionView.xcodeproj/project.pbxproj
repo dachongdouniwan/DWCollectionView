@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A74AB911F0F586E00F65843 /* ReusableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A74AB901F0F586E00F65843 /* ReusableViewController.m */; };
+		8A74AB941F0F5A0000F65843 /* DWReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A74AB931F0F5A0000F65843 /* DWReusableView.m */; };
+		8A74AB971F0F66EF00F65843 /* DWReusableLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A74AB961F0F66EF00F65843 /* DWReusableLayout.m */; };
 		8A7647191F0C7852004357FE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8A7646FF1F0C7852004357FE /* Info.plist */; };
 		8A76471A1F0C7852004357FE /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7647011F0C7852004357FE /* MASCompositeConstraint.m */; };
 		8A76471B1F0C7852004357FE /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 8A7647041F0C7852004357FE /* MASConstraint.m */; };
@@ -53,6 +56,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A74AB8F1F0F586E00F65843 /* ReusableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReusableViewController.h; sourceTree = "<group>"; };
+		8A74AB901F0F586E00F65843 /* ReusableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReusableViewController.m; sourceTree = "<group>"; };
+		8A74AB921F0F5A0000F65843 /* DWReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWReusableView.h; sourceTree = "<group>"; };
+		8A74AB931F0F5A0000F65843 /* DWReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWReusableView.m; sourceTree = "<group>"; };
+		8A74AB951F0F66EF00F65843 /* DWReusableLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWReusableLayout.h; sourceTree = "<group>"; };
+		8A74AB961F0F66EF00F65843 /* DWReusableLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWReusableLayout.m; sourceTree = "<group>"; };
 		8A7646FF1F0C7852004357FE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A7647001F0C7852004357FE /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		8A7647011F0C7852004357FE /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
@@ -211,6 +220,8 @@
 				8A7E09721F0DCFE300909362 /* CommonController.m */,
 				8A7E09741F0DD9C000909362 /* EstimatedItemSizeController.h */,
 				8A7E09751F0DD9C000909362 /* EstimatedItemSizeController.m */,
+				8A74AB8F1F0F586E00F65843 /* ReusableViewController.h */,
+				8A74AB901F0F586E00F65843 /* ReusableViewController.m */,
 			);
 			path = DWLayoutCollectionView;
 			sourceTree = "<group>";
@@ -250,6 +261,10 @@
 				8A99E9871F05F9F8003AC74F /* DWCollectionViewLayout.m */,
 				8A7E09771F0DDB3C00909362 /* DWWateFallLayout.h */,
 				8A7E09781F0DDB3C00909362 /* DWWateFallLayout.m */,
+				8A74AB921F0F5A0000F65843 /* DWReusableView.h */,
+				8A74AB931F0F5A0000F65843 /* DWReusableView.m */,
+				8A74AB951F0F66EF00F65843 /* DWReusableLayout.h */,
+				8A74AB961F0F66EF00F65843 /* DWReusableLayout.m */,
 			);
 			name = DWCollectionview;
 			sourceTree = "<group>";
@@ -391,6 +406,7 @@
 			files = (
 				8A7647201F0C7852004357FE /* NSArray+MASAdditions.m in Sources */,
 				8A76471F1F0C7852004357FE /* MASViewConstraint.m in Sources */,
+				8A74AB941F0F5A0000F65843 /* DWReusableView.m in Sources */,
 				8A99E9571F05F8B8003AC74F /* ViewController.m in Sources */,
 				8A76471C1F0C7852004357FE /* MASConstraintMaker.m in Sources */,
 				8A7E09761F0DD9C000909362 /* EstimatedItemSizeController.m in Sources */,
@@ -407,8 +423,10 @@
 				8A76471D1F0C7852004357FE /* MASLayoutConstraint.m in Sources */,
 				8A99E9881F05F9F8003AC74F /* DWCollectionViewLayout.m in Sources */,
 				8A99E9511F05F8B8003AC74F /* main.m in Sources */,
+				8A74AB971F0F66EF00F65843 /* DWReusableLayout.m in Sources */,
 				8A7647231F0C7852004357FE /* ViewController+MASAdditions.m in Sources */,
 				8A99E9851F05F8E7003AC74F /* DWCollectionView.m in Sources */,
+				8A74AB911F0F586E00F65843 /* ReusableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

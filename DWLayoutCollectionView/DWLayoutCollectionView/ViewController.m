@@ -11,7 +11,7 @@
 #import "WaterFallController.h"
 #import "CommonController.h"
 #import "EstimatedItemSizeController.h"
-
+#import "ReusableViewController.h"
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic,strong) UITableView *tableView;
@@ -35,6 +35,7 @@
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.tableFooterView = [UIView new];
+        
     }
     return _tableView;
 }
@@ -64,6 +65,9 @@
         case 3:
             [self.navigationController pushViewController:[[WaterFallController alloc] init] animated:YES];
             break;
+        case 4:
+            [self.navigationController pushViewController:[[ReusableViewController alloc] init] animated:YES];
+            break;
         default:
             break;
     }
@@ -74,7 +78,7 @@
 
 -(NSArray*)dataArray{
     if (!_dataArray) {
-        _dataArray = [NSArray arrayWithObjects:@"普通collectionView",@"estimatedItemSize-Controller",@"自适应String的layout",@"WaterFallController-瀑布流", nil];
+        _dataArray = [NSArray arrayWithObjects:@"普通collectionView",@"estimatedItemSize-Controller",@"自适应String的layout",@"WaterFallController-瀑布流",@"collectionView区头", nil];
     }
     return _dataArray;
 }
