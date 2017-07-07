@@ -52,7 +52,7 @@
     DWReusableCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"UICollectionViewCellID" forIndexPath:indexPath];
     cell.label.text = self.allArray[indexPath.section][indexPath.row];
     cell.backgroundColor = [UIColor redColor];
-    NSLog(@"%f----%f-----%f-----%f",cell.contentView.frame.origin.x,cell.contentView.frame.origin.y,cell.contentView.frame.size.width,cell.contentView.frame.size.height);
+//    NSLog(@"%f----%f-----%f-----%f",cell.contentView.frame.origin.x,cell.contentView.frame.origin.y,cell.contentView.frame.size.width,cell.contentView.frame.size.height);
     return cell;
 }
 
@@ -90,10 +90,14 @@
 
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     if (section==0) {
-        return CGSizeMake(10, 66);
+        return CGSizeMake(10, 100);
     }else{
-        return CGSizeMake(10, 66);
+        return CGSizeMake(10, 100);
     }
+}
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView{
+//    NSLog(@"====%f",scrollView.contentOffset.y);
 }
 
 -(void)caclueHeight{
@@ -140,8 +144,11 @@
 //        layout.headerReferenceSize = CGSizeMake(100, 30);
         
         DWReusableLayout *layout = [[DWReusableLayout alloc] init];
+        ///自定义laout下面属性也是有效的只不过如果重写特定方法重置attributes 下面属性的值会被自定义的方法的新值覆盖
+        layout.sectionInset = UIEdgeInsetsMake(20, 10, 5, 10);///本质是将这些值作为attributes的frame
+        layout.itemSize = CGSizeMake(100, 60);
         
-        _dwCollectionView = [[DWCollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height-64) collectionViewLayout:layout];
+        _dwCollectionView = [[DWCollectionView alloc] initWithFrame:CGRectMake(0, 64, self.view.bounds.size.width, self.view.bounds.size.height-100) collectionViewLayout:layout];
         [_dwCollectionView registerClass:[DWReusableCollectionViewCell class] forCellWithReuseIdentifier:@"UICollectionViewCellID"];
         [_dwCollectionView registerClass:[DWReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"DWReusableView"];
         _dwCollectionView.delegate = self;

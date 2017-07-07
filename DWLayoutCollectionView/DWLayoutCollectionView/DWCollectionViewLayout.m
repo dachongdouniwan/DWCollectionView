@@ -90,7 +90,7 @@
 ///UICollectionViewLayoutAttributes可以是cell，追加视图或装饰视图的信息，通过不同的UICollectionViewLayoutAttributes初始化方法可以得到不同类型的
 ///初始的layout的外观将由该方法返回的UICollectionViewLayoutAttributes来决定。
 
-///rect 为collectionview 的rect，（高度超出collectionview高度后，rect的height会翻倍）
+///rect 为collectionview 的rect，（高度超出当前屏幕的高度后，rect的height会翻倍）
 -(NSArray *)layoutAttributesForElementsInRect:(CGRect)rect{
     ///3.被调用
     NSLog(@"---------3");

@@ -117,6 +117,11 @@
             //当前的滑动距离 + 因为导航栏产生的偏移量，默认为64（如果app需求不同，需自己设置）
             CGFloat offset = self.collectionView.contentOffset.y + _naviHeight;
             //第一个cell的y值 - 当前header的高度 - 可能存在的sectionInset的top
+            
+            ///firstItemAttributes.frame.origin.y-self.sectionInset.top = CGRectGetMaxY(attributes)(即紧贴header的最大Y值 = header.frame.origin.y+header.bounds.size.height)
+            ///firstItemAttributes.frame.origin.y-self.sectionInset.top = header.frame.origin.y+header.bounds.size.height
+            
+            ///header.frame.origin.y = firstItemAttributes.frame.origin.y-self.sectionInset.top-header.bounds.size.height
             CGFloat headerY = firstItemAttributes.frame.origin.y - rect.size.height - self.sectionInset.top;
             
             //哪个大取哪个，保证header悬停
@@ -128,7 +133,12 @@
             CGFloat headerMissingY = CGRectGetMaxY(lastItemAttributes.frame) + self.sectionInset.bottom - rect.size.height;
             
             //给rect的y赋新值，因为在最后消失的临界点要跟谁消失，所以取小
+            ///两个区头没有接触之前，offset<headerMissingY，所以rect.origin.y==偏移量，接触时offset=headerMissingY，接触后，offset>headerMissingY
+            ///所以接触后最小值就是headerMissingY(即上一个区的最大Y值-rect.size.height)
             rect.origin.y = MIN(maxY,headerMissingY);
+            
+            NSLog(@"%f-----%f----%f---%f",offset,headerY,headerMissingY,rect.origin.y);
+            
             //给header的结构信息的frame重新赋值
             attributes.frame = rect;
             
@@ -137,7 +147,6 @@
             attributes.zIndex = 7;
         }
     }
-    
     //转换回不可变数组，并返回
     return [superArray copy];
     
