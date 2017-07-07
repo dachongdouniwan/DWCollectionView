@@ -111,6 +111,12 @@
     
     NSNumber *currentWidthNumber = self.widthArray[indexPath.row];
     CGFloat width = currentWidthNumber.floatValue;
+    
+    ///没有换行所以超出部分不显示（不写下面的代码也不会报错，不知道为啥）
+    if (width>[UIScreen mainScreen].bounds.size.width-(self.left+self.right)) {
+        width = [UIScreen mainScreen].bounds.size.width - (self.left+self.right);
+    }
+    
     CGFloat height = 30;
     CGRect currentFrame = CGRectZero;
 
@@ -190,7 +196,7 @@
         }
     }
     
-    attributs.size = CGSizeMake(width, 30);
+//    attributs.size = CGSizeMake(width, 30);
     self.maxY = CGRectGetMaxY(attributs.frame)+10;
     
     NSLog(@"%f===%f===%f===%f",attributs.frame.origin.x,attributs.frame.origin.y,attributs.frame.size.width,attributs.frame.size.height);

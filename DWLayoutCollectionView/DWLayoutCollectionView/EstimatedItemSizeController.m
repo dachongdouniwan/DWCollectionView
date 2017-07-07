@@ -30,7 +30,7 @@
 
 -(void)caclueHeight{
     
-    NSArray<NSString*> *array = @[@"打开进",@"打开进风口打开进风口打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口"];
+    NSArray<NSString*> *array = @[@"打开进",@"打开进风口打开进风口打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的快点放假快点减肥肯德基发动机等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口",@"打开进",@"打开进风口",@"打开进风的等待口",@"打开等待进风口"];
     
     __block NSMutableArray *heightArray = [NSMutableArray array];
     
@@ -69,7 +69,6 @@
         //        layout.itemSize = CGSizeMake(100, 30);
         layout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);//整个section相对于collectionview的上左下右的间距（即collectionView有一个区，这个区有五十个item，这个区相当于在collectionView中的一个容器，这个容器相对于collectionView上左下右的间距）不是item之间的上下左右的间距。
         layout.minimumInteritemSpacing = 10;//item之间的最下间距，这个数据设置的时最小的间距，当间距小于这个值时，item就会换行显示，但是如果你设置的是10，世纪间距是20也是不会换行的只有小于这个值时才会换行。
-        
         
         /**
          *1.实现下面的预估size属性，首先要设置cell中contentView的约束，高度可变则定宽，宽度可变则定高，并切设置好其他的约束（上下左右）
@@ -112,19 +111,19 @@
         //问题：因为数据源中第六个元素的宽度超过了collectionview的宽度所以会持续报错导致约束失败。
         //解决方法：不设置最小宽度，设置最大宽度，如果设置了label可以自动换行也是可以将make.height.mas_equalTo(@(30))去掉，这样就可以自动换行了
         
-        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.mas_equalTo(@(0));
-            make.height.mas_equalTo(@(30));
-            ///宽度最小为100
-//            make.width.mas_greaterThanOrEqualTo(@(100)).priority(1000);
-            ///设置最大宽度为390，最大宽度不能超过，DWCollectionView的宽度-左右边距-item的间距*item间距个数，超过就会卡死，debug疯狂输出log
-            make.width.mas_lessThanOrEqualTo([UIScreen mainScreen].bounds.size.width-19);
-        }];
+//        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.top.mas_equalTo(@(0));
+//            make.height.mas_equalTo(@(30));
+//            ///宽度最小为100
+////            make.width.mas_greaterThanOrEqualTo(@(100)).priority(1000);
+//            ///设置最大宽度为390，最大宽度不能超过，DWCollectionView的宽度-左右边距-item的间距*item间距个数，超过就会卡死，debug疯狂输出log
+//            make.width.mas_lessThanOrEqualTo([UIScreen mainScreen].bounds.size.width-19);
+//        }];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.backgroundColor = [UIColor orangeColor];
         label.textAlignment = NSTextAlignmentCenter;
-        label.numberOfLines = 0;
+//        label.numberOfLines = 0;
         [self.contentView addSubview:label];
         self.label = label;
         
