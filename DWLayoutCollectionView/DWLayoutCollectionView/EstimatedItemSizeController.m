@@ -103,33 +103,38 @@
 -(instancetype)initWithFrame:(CGRect)frame{
     if (self =[super initWithFrame:frame]) {
         
-        //1.设置self.contentView的约束，设置宽度就定高，设置高度就定宽（无论定宽还是定高，都不能超过collectionview的宽度和高度）
-        //以上面控制器为例子：我的需求是定高，自适应宽度（最大宽度为collectionview宽度超过不显示，label不能自动换行）
-        //如果不设置contenview的约束：宽度默认就为一个汉子字符的宽度为17.333，高度随着label的换行而增加。如果label不能换行则宽度会一直增加，超出屏幕后继续增加导致约束错误而卡死。
-
-        //如果按照下面的约束设置contenview的约束，设置定高为30，最小宽度为100，
-        //问题：因为数据源中第六个元素的宽度超过了collectionview的宽度所以会持续报错导致约束失败。
-        //解决方法：不设置最小宽度，设置最大宽度，如果设置了label可以自动换行也是可以将make.height.mas_equalTo(@(30))去掉，这样就可以自动换行了
+        ///设置contentView上下左右约束为0
+        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.top.bottom.right.equalTo(self).with.offset(0);
+            //            make.width.mas_equalTo([UIScreen mainScreen].bounds.size.width-20);
+        }];
         
-//        [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.left.top.mas_equalTo(@(0));
-//            make.height.mas_equalTo(@(30));
-//            ///宽度最小为100
-////            make.width.mas_greaterThanOrEqualTo(@(100)).priority(1000);
-//            ///设置最大宽度为390，最大宽度不能超过，DWCollectionView的宽度-左右边距-item的间距*item间距个数，超过就会卡死，debug疯狂输出log
-//            make.width.mas_lessThanOrEqualTo([UIScreen mainScreen].bounds.size.width-19);
-//        }];
+        //        UIImageView *topImageView = [[UIImageView alloc] init];
+        //        topImageView.backgroundColor = [UIColor blueColor];
+        //        [self.contentView addSubview:topImageView];
+        //
+        //        [topImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+        //            make.left.top.equalTo(self.contentView).with.offset(0);
+        //            make.right.equalTo(self.contentView.mas_right).with.offset(-250);
+        //            make.height.mas_equalTo(200);
+        //        }];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
         label.backgroundColor = [UIColor orangeColor];
         label.textAlignment = NSTextAlignmentCenter;
-//        label.numberOfLines = 0;
+        //        label.numberOfLines = 0;
+        [label sizeToFit];
         [self.contentView addSubview:label];
         self.label = label;
         
         //2.设置好subviews的约束
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.top.right.bottom.equalTo(self.contentView).with.offset(0);
+            make.left.right.top.bottom.equalTo(self.contentView).with.offset(0);
+            //            make.top.equalTo(topImageView.mas_bottom).with.offset(0);
+            ///这行代码是为了防止上面数据源中的字符比较多的时候lable长度超出collectionview的长度报错
+            make.width.mas_lessThanOrEqualTo([UIScreen mainScreen].bounds.size.width-20);
+            //            make.width.mas_greaterThanOrEqualTo(@(100));
+            
         }];
     }
     return self;
