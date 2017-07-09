@@ -36,9 +36,9 @@
     
     [self.attributesArray removeAllObjects];
     [self.itemArray removeAllObjects];
-    
+        
     ///获取当前collectionView对应区的item
-    NSInteger count = [self.collectionView numberOfItemsInSection:[self.collectionView numberOfSections]];
+    NSInteger count = [self.collectionView numberOfItemsInSection:0];
     
     for (int i =0; i<count; i++) {
        UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
